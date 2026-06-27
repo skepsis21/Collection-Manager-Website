@@ -11,6 +11,9 @@ from helpers import apology, login_required
 # Configure application
 app = Flask(__name__)
 
+# Use the secret key from the environment, or a default for local development
+app.secret_key = os.environ.get("SECRET_KEY", "dev_secret_key_only_for_local")
+
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
