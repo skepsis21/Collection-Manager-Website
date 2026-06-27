@@ -9,7 +9,7 @@ A dynamic board game collection manager that turns subjective play experiences i
 ## 📌 Project Overview
 **Roll And Rate** is a web-based application designed for board game enthusiasts who want to move beyond simple five-star ratings. By utilizing a custom weighted-scoring algorithm, the platform helps users quantify their gaming preferences, manage their collections, and store personal notes—all within a clean, responsive interface.
 
-![Project Preview](/docs/Project_Preview.bnp)
+![Project Preview](/docs/Project_Preview.bmp)
 
 ---
 
