@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Notes {{ game.name }}
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h3 class="style">Your notes for {{ game.name }}</h3>
+
+    <form action="/notes/{{ game.id }}" method="POST">
+        <div class="form-group">
+            <textarea name="notes" id="notes" class="form-control" rows="10"
+                placeholder="Add your notes...">{{ game.notes if game.notes else '' }}</textarea>
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-warning center btn-xs unique-cell1">Save</button>
+            <a href="/collection" class="btn btn-warning center btn-xs unique-cell1">Back</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

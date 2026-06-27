@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <div class="rounded-5 index mx-auto" style="max-width: 320px;">
+        <form action="/login" method="post">
+            <!-- Input Fields -->
+            <div class="mb-3">
+                <input autocomplete="off" autofocus="on" class="form-control w-100" name="username" placeholder="Username" type="text">
+            </div>
+            <div class="mb-3">
+                <input class="form-control w-100" name="password" placeholder="Password" type="password">
+            </div>
+            
+            <!-- Side-by-Side Buttons Container -->
+            <div class="d-flex gap-2">
+                <button class="btn btn-warning w-60" type="submit">Log In</button>
+                <a href="/register" class="btn btn-warning w-40" role="button">Register</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

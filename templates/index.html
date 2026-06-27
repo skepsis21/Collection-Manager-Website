@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="content-wrapper">
+        <div class="text-bg-dark rounded-5 index">
+            {% if not session['user_id'] %}
+                <p class="text-center">Which games deserve a spot on your shelf?</p>
+                <p class="text-center">Know your collection.</p>
+                <p class="text-center">Rate your favorites.</p>
+                <p class="text-center">TODAY!</p>
+                <form action="/login" class='ml-auto mr-auto'>
+                    <button class="btn btn-warning" role="button">Continue</button>
+                </form>
+            {% else %}
+                <meta http-equiv="refresh" content="0; url=/collection" />
+            {% endif %}
+        </div>
+
+        {% if not session['user_id'] %}
+        {% endif %}
+    </div>
+{% endblock %}

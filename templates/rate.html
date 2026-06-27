@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+RATE
+{% endblock %}
+
+{% block main %}
+<form action="/rate" method="POST">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-equal-cells">
+            <thead>
+                <tr>
+                    <th id="unique-header">Game</th>
+                    <th>Strategy</th>
+                    <th>Theme</th>
+                    <th>Ease</th>
+                    <th>Replay</th>
+                    <th>Length</th>
+                    <th>Art</th>
+                    <th>Interact</th>
+                    <th>Best</th>
+                    <th>FUN</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input autocomplete="off" autofocus type="text" name="name" id="name" class="form-control"
+                            placeholder="Game Name" required>
+                    </td>
+                    <td><input type="number" name="strategy" class="form-control" min="1" max="5" required></td>
+                    <td><input type="number" name="theme" class="form-control" min="1" max="5" required></td>
+                    <td><input type="number" name="ease" class="form-control" min="1" max="5" required></td>
+                    <td><input type="number" name="replay" class="form-control" min="1" max="5" required></td>
+                    <td><input type="number" name="length" class="form-control" min="1" max="5" required></td>
+                    <td><input type="number" name="aesthetics" class="form-control" min="1" max="5" required></td>
+                    <td><input type="number" name="interaction" class="form-control" min="1" max="5" required></td>
+                    <td><input type="number" name="best" class="form-control" min="1" max="5" required></td>
+                    <td><input type="number" name="fun" class="form-control" min="1" max="5" required></td>
+                    <td>
+                        <button type="submit" class="btn btn-warning w-100">ADD</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
+
+<div class="text-bg-dark rounded-5 rating-guide p-4 mt-3">
+    <pre class="text-light">
+★ Add and rate games to build your personal collection. ★
+
+Rating Categories:
+Strategy: Depth of decision-making. Multiple paths to victory?
+Theme: How immersive through game mechanics it is. Storytelling?
+Ease of Play: How easy it is to learn, set up, and play. Streamlined?
+Replayability: How much the game changes and stays fresh over plays.
+Length: Game duration fits your preference. Too short/long?
+Aesthetics: Visual appeal of artwork, components, and design.
+Interaction: How much players engage and affect each other's gameplay.
+Best With: Optimal player count for the best experience.
+Fun: Overall enjoyment and entertainment value.
+    </pre>
+</div>
+{% endblock %}

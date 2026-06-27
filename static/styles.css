@@ -1,0 +1,487 @@
+html,
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)), url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+    /* Prevents global page scrolling */
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    /* Restricts internal elements from bleeding out */
+}
+
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.style {
+    text-align: left;
+    font-size: 60px;
+    color: white;
+}
+
+/* ==========================================================================
+   2. NAVBAR COMPONENT
+   ========================================================================== */
+nav .navbar-brand {
+    font-size: xx-large;
+}
+
+.navbar-brand {
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+nav .navbar-brand .black {
+    color: #28282B;
+}
+
+.navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.navbar-nav {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-link {
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+}
+
+.collapse {
+    display: block;
+    margin: auto;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: Verdana, sans-serif;
+}
+
+/* Brand Colors */
+.blue {
+    color: #537fbe;
+}
+
+.red {
+    color: #ea433b;
+}
+
+.yellow {
+    color: #f5b82e;
+}
+
+.green {
+    color: #2e944b;
+}
+
+/* ==========================================================================
+   3. RESPONSIVE TABLE ENGINE
+   ========================================================================== */
+.table-responsive {
+    z-index: 2;
+    width: fit-content !important;
+    max-width: 98vw !important;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    max-height: 66vh;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    margin: auto;
+    padding: 8px;
+}
+
+/* Structural Layout Enforcement */
+.table-equal-cells {
+    table-layout: fixed !important;
+    width: max-content !important;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+/* Base Cells Styling Core */
+.table,
+.table td,
+.table th {
+    background-color: transparent !important;
+    border: 2px solid rgba(0, 0, 0, 0.8) !important;
+    /* Thick black comic lines */
+    color: #000 !important;
+    vertical-align: middle;
+}
+
+/* Body Cell Text Shadow Only */
+.table-equal-cells tbody td {
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+}
+
+/* Typography Merges for standard data metrics cells */
+.table-equal-cells th,
+.table-equal-cells td {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-size: 15.5px !important;
+    padding: 6px 4px !important;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   ABSOLUTE TABLE HEADER TYPOGRAPHY EQUALIZER (FIXES GAME CELL MISMATCH)
+   ========================================================================== */
+.table-equal-cells thead th,
+.table-equal-cells thead th a,
+.table-equal-cells thead tr th,
+#unique-header,
+#unique-header a,
+#rank-header {
+    font-size: 14.5px !important;     /* Upscaled size so all text matches the big Strategy font exactly */
+    font-weight: 900 !important;      /* Forces maximum bold thickness globally */
+    text-transform: uppercase !important; /* Locks all text to uppercase clean lines */
+    color: #000000 !important;        /* Pure solid black */
+    text-decoration: none !important; /* Strips underlines from sorting links */
+    text-shadow: none !important;     /* Prevents glowing distortions from thinning text */
+    letter-spacing: 0.5px !important; /* Adds clear horizontal tracking spacing */
+}
+
+/* Ensure the layout cell containers stay cleanly centered and padded */
+.table-equal-cells thead th {
+    writing-mode: horizontal-tb;
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 4px 4px !important;     /* Clean, spacious cell vertical padding */
+}
+
+/* Keeps sorting down-arrows perfectly inline with the words */
+.table-equal-cells thead th a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;                
+    white-space: nowrap !important;
+}
+
+/* --------------------------------------------------------------------------
+   DYN-PAGE A: COLLECTION WORKSPACE CONFIGURATIONS (DETECTS RANK COLUMN)
+   -------------------------------------------------------------------------- */
+
+/* Column 1: Rank Sizing Controls */
+#rank-header,
+.table-responsive:has(#rank-header) .table-equal-cells thead th:nth-child(1) {
+    width: 55px !important;
+    min-width: 55px !important;
+    max-width: 55px !important;
+    padding: 10px 0px !important;
+}
+
+.table-responsive:has(#rank-header) .table-equal-cells tbody td:nth-child(1),
+.table-responsive:has(#rank-header) .table-equal-cells tr td.rank-cell {
+    width: 55px !important;
+    min-width: 55px !important;
+    max-width: 55px !important;
+    font-size: 21.5px !important;
+    font-weight: 800 !important;
+    padding: 6px 0px !important;
+}
+
+/* Column 2: Game Title Sizing Controls */
+#unique-header,
+.table-responsive:has(#rank-header) .table-equal-cells thead th:nth-child(2) {
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+}
+
+.table-responsive:has(#rank-header) .table-equal-cells tbody td:nth-child(2) {
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+    font-size: 21.5px !important;
+    font-weight: 700 !important;
+    white-space: normal !important;
+}
+
+/* Columns 3 through 12: Core Numerical Parameters & Final Scores */
+.table-responsive:has(#rank-header) .table-equal-cells thead th:nth-child(n+3):nth-child(-n+12),
+.table-responsive:has(#rank-header) .table-equal-cells tbody td:nth-child(n+3):nth-child(-n+12) {
+    width: 110px !important;
+    min-width: 110px !important;
+    max-width: 110px !important;
+    white-space: nowrap !important;
+}
+
+/* Enforce distinct data prominence rules onto Column 12 (Score cells data body) */
+.table-responsive:has(#rank-header) .table-equal-cells tbody td:nth-child(12) {
+    font-size: 21.5px !important;
+    font-weight: 800 !important;
+}
+
+/* Column 13: Actions Control Container */
+.table-responsive:has(#rank-header) .table-equal-cells thead th:nth-child(13),
+.table-responsive:has(#rank-header) .table-equal-cells tbody td:nth-child(13) {
+    width: 155px !important;
+    min-width: 155px !important;
+    max-width: 155px !important;
+}
+
+/* --------------------------------------------------------------------------
+   DYN-PAGE B: RATE FORM INPUTS WORKSPACE CONFIGURATIONS (DETECTS INPUT FIELDS)
+   -------------------------------------------------------------------------- */
+
+/* Column 1: Game Name text input block frame */
+.table-responsive:has(input[type="number"]) .table-equal-cells thead th:nth-child(1) {
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+}
+
+.table-responsive:has(input[type="number"]) .table-equal-cells tbody td:nth-child(1) {
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+}
+
+/* Columns 2 through 10: Numerical parameters fields matrix slots */
+.table-responsive:has(input[type="number"]) .table-equal-cells thead th:nth-child(n+2):nth-child(-n+10),
+.table-responsive:has(input[type="number"]) .table-equal-cells tbody td:nth-child(n+2):nth-child(-n+10) {
+    width: 110px !important;
+    min-width: 110px !important;
+    max-width: 110px !important;
+}
+
+/* Column 11: Action submit button layout box */
+.table-responsive:has(input[type="number"]) .table-equal-cells thead th:nth-child(11),
+.table-responsive:has(input[type="number"]) .table-equal-cells tbody td:nth-child(11) {
+    width: 140px !important;
+    min-width: 140px !important;
+    max-width: 140px !important;
+}
+
+/* ==========================================================================
+   4. USER INPUTS & BUTTON SYSTEM
+   ========================================================================== */
+.table-equal-cells input,
+.table input[type="text"],
+.table input[type="number"] {
+    background-color: #D3D3D3 !important;
+    border: 1px solid rgba(0, 0, 0, 0.4) !important;
+    border-radius: 4px !important;
+    color: #000000 !important;
+    font-weight: 600 !important;
+    padding: 6px 4px !important;
+    box-sizing: border-box !important;
+    font-size: 18px !important;
+    width: 100% !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: inner-spin-button !important;
+    display: inline-flex !important;
+    opacity: 1 !important;
+    cursor: pointer;
+}
+
+/* Subgrid columns constraints split mechanics inside action utilities cell */
+.table-equal-cells td:last-child .d-flex {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 6px !important;
+    width: 100% !important;
+}
+
+.table-equal-cells td:last-child form {
+    display: inline-block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+.btn {
+    width: 168px;
+    padding: 12px 24px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-action {
+    width: 100% !important;
+    height: auto !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 2px !important;
+    font-size: 15.5px !important;
+    font-weight: 600 !important;
+    color: #28282B !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 20px !important;
+    transition: all 0.2s ease-in-out !important;
+    line-height: normal !important;
+}
+
+.btn-action:hover {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+    color: #000000 !important;
+    transform: translateY(0) !important;
+    box-shadow: none !important;
+}
+
+/* ==========================================================================5. DECORATIVE VIEWS, CARDS & GUIDES========================================================================== */
+.index {
+    text-align: center;
+    padding: 40px;
+    font-size: 21.5px;
+    margin-top: 20px;
+}
+
+.score-item {
+    padding: 12px 15px;
+    margin: 8px 0;
+    font-size: 21.5px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.meme {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.guide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 90%;
+    max-width: 550px;
+    background: rgba(25, 25, 30, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 45px 30px;
+    border-radius: 18px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.guide h2,
+.guide h3 {
+    font-size: 33.5px !important;
+    font-weight: 800 !important;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+.guide p,
+.guide pre {
+    color: #e0e0e0 !important;
+    font-size: 19px !important;
+    line-height: 1.6;
+    margin-bottom: 25px !important;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.rating-guide {
+    font-size: 26.5px !important;
+    line-height: 1.6;
+    padding: 30px !important;
+}
+
+.about {
+    position: relative !important;   
+    margin: 60px auto !important;    
+    width: fit-content !important;   
+    max-width: 90% !important;
+    z-index: 2;
+    top: 30% !important;
+    
+    /* FIXED: Swapped solid background for a modern semi-transparent tint */
+    background-color: rgba(25, 25, 30, 0.6) !important; 
+    backdrop-filter: blur(1px) !important; /* Matches the table blur scale */
+    -webkit-backdrop-filter: blur(1px) !important;
+    
+    padding: 24px 40px !important;    
+    border-radius: 18px !important;  
+    border: 1px solid rgba(255, 255, 255, 0.15) !important; 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;  
+    
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+/* 2. Style the internal text to align perfectly dead center */
+.about pre {
+    font-size: 21.5px !important;
+    margin: 0 !important;
+    padding: 0 !important; /* Forces layout boxes to drop secret padding metrics */
+    color: #ffffff !important;
+    font-family: sans-serif;
+    text-align: center !important;  
+    white-space: normal !important; /* Converts rigid preformatting behavior to normal text */
+}
+/* ==========================================================================6. FOOTER ENGINE========================================================================== */
+.footer {
+    background-color: #E4A11B;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 16.5px;
+}
+
