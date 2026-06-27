@@ -18,6 +18,10 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
+if not os.path.exists("collection.db"):
+    from init_db import init_db
+    init_db()
+
 db = SQL("sqlite:///collection.db")
 
 
